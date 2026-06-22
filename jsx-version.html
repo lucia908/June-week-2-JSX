@@ -11,7 +11,13 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/babel" data-type="module">
+    <script>
+        // Classic JSX runtime uses React.createElement — works with UMD scripts from CDN
+        Babel.registerPreset('reactClassic', {
+            presets: [[Babel.availablePresets.react, { runtime: 'classic' }]],
+        });
+    </script>
+    <script type="text/babel" data-presets="reactClassic">
         // Components can be used INSIDE other components — this is called "composition"
         // This Button component is small, but it keeps button styling/logic in one place
         // "variant" defaults to "secondary" if not provided — this is called a default parameter
@@ -59,7 +65,7 @@
                 includesText: 'Includes:',
                 features: ['No credit card required', 'Limited Agent requests', 'Limited Tab completions'],
                 buttonText: 'Download',
-                buttonVariant: 'secondary',
+                buttonVariant: 'tertiary',
             };
             const proPlan = {
                 title: 'Pro',
@@ -72,6 +78,19 @@
                     'Maximum context windows',
                 ],
                 buttonText: 'Get Pro',
+                buttonVariant: 'secondary',
+            };
+            const enterprisePlan = {
+                title: 'Enterprise',
+                price: '$99/mo.',
+                includesText: 'Everything in Pro, plus:',
+                features: [
+                    'Unlimited Agent requests',
+                    'API calls',
+                    'Multiple Background Agents',
+                    'Maximum context windows',
+                ],
+                buttonText: 'Get Enterprise',
                 buttonVariant: 'primary',
             };
 
@@ -84,6 +103,7 @@
                         {/* This is the same as writing: title="Hobby" price="Free" includesText="Includes:" etc. */}
                         <PricingCard {...hobbyPlan} />
                         <PricingCard {...proPlan} />
+                        <PricingCard {...enterprisePlan} />
                     </div>
                 </>
             );
