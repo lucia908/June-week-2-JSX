@@ -132,16 +132,16 @@ body {
 
 .download-button.tertiary {
     background-color: transparent;
-    border: 1px solid #c2c1ba;
+    border: 1px solid #e2e1db;
     color: #333;
 }
 
 .download-button.tertiary:hover {
-    background-color: #deddd6;
+    background-color: #e2e1db;
 }
 
 .download-button.tertiary:active {
-    background-color: #deddd6;
+    background-color: #e2e1db;
 }
 
 .page-label {
